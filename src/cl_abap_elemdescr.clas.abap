@@ -5,17 +5,6 @@ CLASS cl_abap_elemdescr DEFINITION
 
   PUBLIC SECTION.
 
-    TYPES:
-  " Fixvalue is a type compatible to ddfixvalue
-      BEGIN OF fixvalue,
-      low        TYPE c LENGTH 10,
-      high       TYPE c LENGTH 10,
-      option     TYPE c LENGTH 2,
-      ddlanguage TYPE c,
-      ddtext     TYPE c LENGTH 60,
-      END OF fixvalue.
-    TYPES:
-      fixvalues TYPE STANDARD TABLE OF fixvalue WITH DEFAULT KEY.
     CONSTANTS type_x_max_length TYPE i VALUE 524287 ##NO_TEXT.
     CONSTANTS type_c_max_length TYPE i VALUE 262143 ##NO_TEXT.
     CONSTANTS type_n_max_length TYPE i VALUE 262143 ##NO_TEXT.
@@ -33,14 +22,7 @@ CLASS cl_abap_elemdescr DEFINITION
       EXCEPTIONS
       not_found
       no_ddic_type.
-    METHODS get_ddic_fixed_values
-      IMPORTING
-      VALUE(p_langu) TYPE langu DEFAULT sy-langu
-      RETURNING
-      VALUE(p_fixed_values) TYPE fixvalues
-      EXCEPTIONS
-      not_found
-      no_ddic_type.
+
     CLASS-METHODS get_string
       RETURNING
       VALUE(p_result) TYPE REF TO cl_abap_elemdescr.
